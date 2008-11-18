@@ -21,66 +21,76 @@ items:
   - &id004 !ruby/object:Claret::Task 
     contributes_to: 
     - *id001
-    - &id005 !ruby/object:Claret::Milestone 
+    - &id006 !ruby/object:Claret::Milestone 
       dependents: 
       - *id004
-      - &id008 !ruby/object:Claret::Task 
+      - &id012 !ruby/object:Claret::Task 
         contributes_to: 
         - *id001
-        - *id005
+        - *id006
         - *id004
         dependents: []
 
+        finish_date: &id005 2008-11-18 17:35:41.715117 -05:00
         id: 6
         name: determine deployment layout
-      - &id009 !ruby/object:Claret::Task 
+        start_date: *id005
+      - &id013 !ruby/object:Claret::Task 
         contributes_to: 
         - *id001
-        - *id005
+        - *id006
         - *id004
         dependents: []
 
+        finish_date: &id007 2008-11-18 17:35:38.101412 -05:00
         id: 7
         name: setup JBoss
-      - &id006 !ruby/object:Claret::Task 
+        start_date: *id007
+      - &id010 !ruby/object:Claret::Task 
         contributes_to: 
         - *id001
-        - *id005
-        - &id007 !ruby/object:Claret::Task 
+        - *id006
+        - &id011 !ruby/object:Claret::Task 
           contributes_to: 
           - *id001
-          - *id005
-          dependents: 
           - *id006
+          dependents: 
+          - *id010
+          finish_date: &id008 2008-11-18 17:35:59.242359 -05:00
           id: 9
           name: deploy dummy stuff to test environment
+          start_date: *id008
         dependents: 
         - *id004
+        finish_date: &id009 2008-11-18 17:35:53.951328 -05:00
         id: 8
         name: make dummy servlet/JSP
-      - *id007
+        start_date: *id009
+      - *id011
       estimated_achieve_date: 
       id: 10
       name: Environment set up
-    - *id006
+    - *id010
     dependents: 
-    - *id008
-    - *id009
+    - *id012
+    - *id013
+    finish_date: &id014 2008-11-18 17:35:47.809925 -05:00
     id: 5
     name: Create build.xml
-  - *id008
-  - *id009
-  - *id006
-  - *id007
+    start_date: *id014
+  - *id012
+  - *id013
+  - *id010
+  - *id011
   id: 2
   name: Create routing servlet
 - *id002
 - *id003
 - *id004
-- *id008
-- *id009
+- *id012
+- *id013
+- *id010
+- *id011
 - *id006
-- *id007
-- *id005
 name: Fun Web Framework
 next_id: 11

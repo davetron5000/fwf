@@ -1,0 +1,12 @@
+<project name="war">
+    <target name="war" depends="compile">
+        <war
+            destfile="${war.deploy.dir}/${ant.project.name}.war"
+            webxml="${conf.dir}/web.xml"
+            basedir="${web.dir}" 
+            excludes="README.markdown" >
+            <lib dir="${rt.lib.dir}" />
+            <classes dir="${classes.dir}" />
+        </war>
+    </target>
+</project>

@@ -1,4 +1,4 @@
-<project name="restunit" default="compile" basedir=".">
+<project name="fwf" default="compile" basedir=".">
 
     <property environment="env" />
     <property file="build.properties" />
@@ -15,6 +15,7 @@
 
     <import file="${ant.src.dir}/compile.xml" />
     <import file="${ant.src.dir}/javadoc.xml" />
+    <import file="${ant.src.dir}/war.xml" />
 
     <!-- SUB TARGETS -->
 

@@ -1,0 +1,23 @@
+<project name="restunit" default="compile" basedir=".">
+
+    <property environment="env" />
+    <property file="build.properties" />
+
+    <import file="${ant.src.dir}/paths.xml" />
+    <import file="${ant.src.dir}/taskdefs.xml" />
+
+    <!-- TARGETS -->
+
+    <target name="clean"
+        description="Remove all generated targets">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <import file="${ant.src.dir}/compile.xml" />
+    <import file="${ant.src.dir}/javadoc.xml" />
+
+    <!-- SUB TARGETS -->
+
+    <import file="${ant.src.dir}/checkstyle.xml" />
+
+</project>

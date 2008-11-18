@@ -1,0 +1,16 @@
+<project name="paths">
+    <path id="compile.classpath">
+        <fileset dir="${rt.lib.dir}"> <include name="*.jar"/> </fileset>
+        <fileset dir="${test.lib.dir}"> <include name="*.jar"/> </fileset>
+    </path>
+
+    <path id="test.compile.classpath">
+        <path refid="compile.classpath" />
+        <pathelement location="${classes.dir}" />
+    </path>
+
+    <path id="test.classpath">
+        <path refid="test.compile.classpath" />
+        <pathelement location="${test.classes.dir}" />
+    </path>
+</project>

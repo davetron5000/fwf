@@ -1,0 +1,8 @@
+<project name="taskdefs">
+    <taskdef resource="checkstyletask.properties"
+        classpath="${test.lib.dir}/checkstyle-all-4.4.jar" />
+
+    <taskdef name="testng" 
+        classpathref="compile.classpath"
+        classname="org.testng.TestNGAntTask" />
+</project>

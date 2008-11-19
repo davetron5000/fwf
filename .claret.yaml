@@ -34,7 +34,7 @@ items:
             - &id007 !ruby/object:Claret::Milestone 
               dependents: 
               - *id004
-              - &id016 !ruby/object:Claret::Task 
+              - &id017 !ruby/object:Claret::Task 
                 contributes_to: 
                 - *id003
                 - *id007
@@ -48,8 +48,8 @@ items:
                   - *id006
                   dependents: 
                   - *id004
-                  - *id016
-                  - &id017 !ruby/object:Claret::Task 
+                  - *id017
+                  - &id018 !ruby/object:Claret::Task 
                     contributes_to: 
                     - *id003
                     - *id007
@@ -90,15 +90,17 @@ items:
                     name: make dummy servlet/JSP
                     start_date: *id012
                   - *id014
+                  finish_date: &id015 2008-11-18 19:14:12.189605 -05:00
                   id: 13
                   name: Create parameters parser
+                  start_date: *id015
                 dependents: []
 
-                finish_date: &id015 2008-11-18 17:35:41.715117 -05:00
+                finish_date: &id016 2008-11-18 17:35:41.715117 -05:00
                 id: 6
                 name: determine deployment layout
-                start_date: *id015
-              - *id017
+                start_date: *id016
+              - *id018
               - *id013
               - *id014
               estimated_achieve_date: 
@@ -109,14 +111,14 @@ items:
             - *id008
             - *id010
             dependents: 
-            - *id016
             - *id017
-            finish_date: &id018 2008-11-18 17:35:47.809925 -05:00
+            - *id018
+            finish_date: &id019 2008-11-18 17:35:47.809925 -05:00
             id: 5
             name: Create build.xml
-            start_date: *id018
-          - *id016
+            start_date: *id019
           - *id017
+          - *id018
           - *id013
           - *id014
           id: 12
@@ -127,8 +129,8 @@ items:
         name: Create routing servlet
       dependents: 
       - *id004
-      - *id016
       - *id017
+      - *id018
       - *id013
       - *id014
       id: 11
@@ -144,8 +146,8 @@ items:
   name: Create sample application
 - *id002
 - *id004
-- *id016
 - *id017
+- *id018
 - *id013
 - *id014
 - *id007

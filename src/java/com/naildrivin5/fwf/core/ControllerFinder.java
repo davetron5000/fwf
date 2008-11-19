@@ -7,7 +7,7 @@ import com.naildrivin5.fwf.*;
 
 import org.apache.log4j.*;
 
-/** Handles locating the controller based on a list of packages.
+/** Handles locating the controller based on a list of packages and a model name.
 */
 public class ControllerFinder
 {
@@ -23,16 +23,16 @@ public class ControllerFinder
     }
 
     /** Finds the named class in the list of packages provided to the constructor.
-     * @param controllerName the name of the class
+     * @param modelName the name of the model whose controller we are locating
      * @return the class matching the controller name, or null if it couldn't be found.  The controller must
      * extend {@link ApplicationController}.
      */
-    public Class find(String controllerName)
+    public Class find(String modelName)
     {
-        itsLogger.debug("Finding " + controllerName);
+        itsLogger.debug("Finding " + modelName);
         for (String packageName: itsPackagesToSearch)
         {
-            String className = packageName + "." + controllerName;
+            String className = packageName + "." + modelName + "Controller";
             itsLogger.debug("Attempting to load " + className);
             try
             {

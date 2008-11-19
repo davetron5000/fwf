@@ -20,16 +20,6 @@ public class ViewFinder
      */
     public String find(String controllerName, String actionName)
     {
-        String controllerBase = getControllerBase(controllerName);
-        return "view/" + controllerBase + "/" + actionName + ".jsp";
+        return "view/" + controllerName + "/" + actionName + ".jsp";
     }
-
-    private String getControllerBase(String controllerName)
-    {
-        int index = controllerName.lastIndexOf("Controller");
-        if (index == -1)
-            throw new IllegalArgumentException(controllerName + " is not a valid controller name");
-        return controllerName.substring(0,index);
-    }
-
 }

@@ -45,7 +45,7 @@ public class RouteParser
             return null;
         }
 
-        String controllerName = getControllerName(parts[0]);
+        String modelName = getModelName(parts[0]);
         Long id = null;
         String actionName = null;
         if (parts.length > 1)
@@ -66,14 +66,14 @@ public class RouteParser
             actionName = getActionNameFromRequestMethod(method,id);
         }
 
-        return new ParsedRoute(controllerName,id,actionName);
+        return new ParsedRoute(modelName,id,actionName);
     }
 
     /** Translates the action name in the URI to one we can use to look up
-     * the action in the controller.
+     * the action in the model.
      * @param actionNameUriPart action name from the URI (may be null)
      * @return a normalized version of the action name we can use to locate
-     * it on the controller.
+     * it on the model.
      */
     protected String getActionName(String actionNameUriPart)
     {
@@ -85,7 +85,7 @@ public class RouteParser
     /** Determines the action name from the request method and id.
      * @param method the HTTP request method.
      * @param id the id included in the request, or null if it wasn't included.
-     * @return a normalized action name that can be used on the controller
+     * @return a normalized action name that can be used on the model
      */
     protected String getActionNameFromRequestMethod(RequestMethod method, Long id)
     {
@@ -126,14 +126,14 @@ public class RouteParser
         }
     }
 
-    /** Gets the normalized version of the controller based on the URI fragment.
-     * @param controllerUriPart the controller name from the URI.
-     * @return a normalized name for the controller we can use to locate its implementation.
+    /** Gets the normalized version of the model based on the URI fragment.
+     * @param modelUriPart the model name from the URI.
+     * @return a normalized name for the model we can use to locate its implementation.
      */
-    protected String getControllerName(String controllerUriPart)
+    protected String getModelName(String modelUriPart)
     {
-        if (controllerUriPart == null)
+        if (modelUriPart == null)
             return null;
-        return StringUtils.camelize(controllerUriPart) + "Controller";
+        return StringUtils.camelize(modelUriPart);
     }
 }

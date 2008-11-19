@@ -25,22 +25,22 @@ public class TestViewFinder
 
         int row = 0;
 
-        testCases[row][0] = "ProjectController";
+        testCases[row][0] = "Project";
         testCases[row][1] = "update";
         testCases[row][2] = "view/Project/update.jsp";
         row++;
 
-        testCases[row][0] = "ProjectController";
+        testCases[row][0] = "Project";
         testCases[row][1] = "doIt";
         testCases[row][2] = "view/Project/doIt.jsp";
         row++;
 
-        testCases[row][0] = "TaskListController";
+        testCases[row][0] = "TaskList";
         testCases[row][1] = "doIt";
         testCases[row][2] = "view/TaskList/doIt.jsp";
         row++;
 
-        testCases[row][0] = "TaskListController";
+        testCases[row][0] = "TaskList";
         testCases[row][1] = "edit";
         testCases[row][2] = "view/TaskList/edit.jsp";
         row++;

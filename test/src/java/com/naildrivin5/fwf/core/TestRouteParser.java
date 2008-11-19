@@ -19,7 +19,7 @@ public class TestRouteParser
 
         long id = 45;
         String noun = "project";
-        String controller = "ProjectController";
+        String controller = "Project";
         int row = 0;
         for (int i=0;i<2; i++)
         {
@@ -27,7 +27,7 @@ public class TestRouteParser
             if (i == 1)
             {
                 noun = "big_stuff";
-                controller = "BigStuffController";
+                controller = "BigStuff";
             }
 
             testCases[row][0] = new TestRequest("GET",noun + "");

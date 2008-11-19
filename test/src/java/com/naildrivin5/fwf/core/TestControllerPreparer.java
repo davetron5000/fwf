@@ -1,5 +1,6 @@
+package com.naildrivin5.fwf.core;
 
-package com.naildrivin5.fwf;
+import com.naildrivin5.fwf.*;
 
 import java.util.*;
 
@@ -7,6 +8,8 @@ import org.testng.*;
 import org.testng.annotations.*;
 
 import static org.easymock.classextension.EasyMock.*;
+
+import com.naildrivin5.fwf.Parameters;
 
 @Test
 public class TestControllerPreparer

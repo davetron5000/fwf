@@ -1,5 +1,6 @@
+package com.naildrivin5.fwf.core;
 
-package com.naildrivin5.fwf;
+import com.naildrivin5.fwf.*;
 
 import java.util.*;
 

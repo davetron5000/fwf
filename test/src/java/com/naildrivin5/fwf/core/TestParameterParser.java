@@ -1,9 +1,13 @@
-package com.naildrivin5.fwf;
+package com.naildrivin5.fwf.core;
+
+import com.naildrivin5.fwf.*;
 
 import java.util.*;
 
 import org.testng.*;
 import org.testng.annotations.*;
+
+import com.naildrivin5.fwf.Parameters;
 
 @Test
 public class TestParameterParser

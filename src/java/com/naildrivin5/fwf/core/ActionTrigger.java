@@ -1,7 +1,9 @@
-package com.naildrivin5.fwf;
+package com.naildrivin5.fwf.core;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import com.naildrivin5.fwf.*;
 
 /** This triggers the actions based on the request.
 */

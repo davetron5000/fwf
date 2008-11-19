@@ -1,4 +1,4 @@
-package com.naildrivin5.fwf;
+package com.naildrivin5.fwf.core;
 
 /** Represents a parsed route in terms of a controller, id, and action.
 */

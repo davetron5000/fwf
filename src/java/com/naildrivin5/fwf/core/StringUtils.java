@@ -1,4 +1,4 @@
-package com.naildrivin5.fwf;
+package com.naildrivin5.fwf.core;
 
 /** Utility methods for dealing with strings.
  */

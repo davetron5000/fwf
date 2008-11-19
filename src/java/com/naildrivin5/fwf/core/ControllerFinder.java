@@ -1,7 +1,9 @@
-package com.naildrivin5.fwf;
+package com.naildrivin5.fwf.core;
 
 import java.text.*;
 import java.util.*;
+
+import com.naildrivin5.fwf.*;
 
 import org.apache.log4j.*;
 

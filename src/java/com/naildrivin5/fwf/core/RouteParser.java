@@ -1,11 +1,11 @@
-package com.naildrivin5.fwf;
+package com.naildrivin5.fwf.core;
 
 import java.text.*;
 import java.util.*;
 
 import org.apache.log4j.*;
 
-import static com.naildrivin5.fwf.RequestMethod.*;
+import static com.naildrivin5.fwf.core.RequestMethod.*;
 
 /** Parses parameters from {@link javax.servlet.ServletRequest} into a more useful class.
  */

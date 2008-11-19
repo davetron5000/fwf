@@ -38,7 +38,8 @@ public class RouteParser
             return null;
         }
 
-        String parts[] = uri.split("\\/");
+        String normalizedURI = normalizeURI(uri);
+        String parts[] = normalizedURI.split("\\/");
         if (parts.length == 0)
         {
             itsLogger.warn("uris with nothing in them aren't allowed");
@@ -135,5 +136,13 @@ public class RouteParser
         if (modelUriPart == null)
             return null;
         return StringUtils.camelize(modelUriPart);
+    }
+
+    private String normalizeURI(String uri)
+    {
+        if (uri.startsWith("/"))
+            return uri.substring(1);
+        else
+            return uri;
     }
 }

@@ -27,31 +27,31 @@ public class TestViewFinder
 
         testCases[row][0] = "Project";
         testCases[row][1] = "update";
-        testCases[row][2] = "view/Project/update.jsp";
+        testCases[row][2] = "/view/Project/update.jsp";
         testCases[row][3] = new Response();
         row++;
 
         testCases[row][0] = "Project";
         testCases[row][1] = "doIt";
-        testCases[row][2] = "view/Project/doIt.jsp";
+        testCases[row][2] = "/view/Project/doIt.jsp";
         testCases[row][3] = new Response();
         row++;
 
         testCases[row][0] = "TaskList";
         testCases[row][1] = "doIt";
-        testCases[row][2] = "view/TaskList/doIt.jsp";
+        testCases[row][2] = "/view/TaskList/doIt.jsp";
         testCases[row][3] = new Response();
         row++;
 
         testCases[row][0] = "TaskList";
         testCases[row][1] = "edit";
-        testCases[row][2] = "view/TaskList/edit.jsp";
+        testCases[row][2] = "/view/TaskList/edit.jsp";
         testCases[row][3] = new Response();
         row++;
 
         testCases[row][0] = "TaskList";
         testCases[row][1] = "edit";
-        testCases[row][2] = "view/TaskList/show.jsp";
+        testCases[row][2] = "/view/TaskList/show.jsp";
         Response response = new Response();
         response.render("show");
         testCases[row][3] = response;
@@ -59,7 +59,7 @@ public class TestViewFinder
 
         testCases[row][0] = "TaskList";
         testCases[row][1] = "edit";
-        testCases[row][2] = "view/Project/index.jsp";
+        testCases[row][2] = "/view/Project/index.jsp";
         response = new Response();
         response.render("Project","index");
         testCases[row][3] = response;

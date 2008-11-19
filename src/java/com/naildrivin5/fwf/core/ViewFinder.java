@@ -30,6 +30,8 @@ public class ViewFinder
         if (response.getViewName() != null)
             view = response.getViewName();
 
-        return "view/" + model + "/" + view + ".jsp";
+        String path = "/view/" + model + "/" + view + ".jsp";
+        itsLogger.debug("Returning " + path);
+        return path;
     }
 }

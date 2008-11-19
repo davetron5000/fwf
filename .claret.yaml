@@ -196,5 +196,26 @@ items:
 - *id025
 - *id026
 - *id027
+- !ruby/object:Claret::Task 
+  contributes_to: []
+
+  dependents: []
+
+  id: 21
+  name: Make servlet more robust
+- !ruby/object:Claret::Task 
+  contributes_to: []
+
+  dependents: []
+
+  id: 22
+  name: Invert dependencies in servlet
+- !ruby/object:Claret::Task 
+  contributes_to: []
+
+  dependents: []
+
+  id: 23
+  name: Figure out how to make data available to JSPs
 name: Fun Web Framework
-next_id: 21
+next_id: 24

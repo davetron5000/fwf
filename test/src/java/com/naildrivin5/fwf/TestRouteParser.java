@@ -13,57 +13,81 @@ public class TestRouteParser
     @DataProvider(name = "testCases")
     private Object[][] getTestCases()
     {
-        Object testCases[][] = new Object[12][2];
+        Object testCases[][] = new Object[15 * 2][2];
+
+        long id = 45;
+        String noun = "project";
+        String controller = "ProjectController";
         int row = 0;
+        for (int i=0;i<2; i++)
+        {
+            id *= (i + 1);
+            if (i == 1)
+            {
+                noun = "big_stuff";
+                controller = "BigStuffController";
+            }
 
-        testCases[row][0] = new TestRequest("GET","project");
-        testCases[row][1] = new ParsedRoute("ProjectController",null,"index");
-        row++;
+            testCases[row][0] = new TestRequest("GET",noun + "");
+            testCases[row][1] = new ParsedRoute(controller,null,"index");
+            row++;
 
-        testCases[row][0] = new TestRequest("GET","project/45");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"show");
-        row++;
+            testCases[row][0] = new TestRequest("GET",noun + "/" + id + "");
+            testCases[row][1] = new ParsedRoute(controller,id,"show");
+            row++;
 
-        testCases[row][0] = new TestRequest("PUT","project/45");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"update");
-        row++;
+            testCases[row][0] = new TestRequest("PUT",noun + "/" + id + "");
+            testCases[row][1] = new ParsedRoute(controller,id,"update");
+            row++;
 
-        testCases[row][0] = new TestRequest("DELETE","project/45");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"destroy");
-        row++;
+            testCases[row][0] = new TestRequest("DELETE",noun + "/" + id + "");
+            testCases[row][1] = new ParsedRoute(controller,id,"destroy");
+            row++;
 
-        testCases[row][0] = new TestRequest("POST","project");
-        testCases[row][1] = new ParsedRoute("ProjectController",null,"create");
-        row++;
+            testCases[row][0] = new TestRequest("POST",noun + "");
+            testCases[row][1] = new ParsedRoute(controller,null,"create");
+            row++;
 
-        testCases[row][0] = new TestRequest("GET","project/45/show");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"show");
-        row++;
+            testCases[row][0] = new TestRequest("GET",noun + "/" + id + "/show");
+            testCases[row][1] = new ParsedRoute(controller,id,"show");
+            row++;
 
-        testCases[row][0] = new TestRequest("PUT","project/45/update");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"update");
-        row++;
+            testCases[row][0] = new TestRequest("PUT",noun + "/" + id + "/update");
+            testCases[row][1] = new ParsedRoute(controller,id,"update");
+            row++;
 
-        testCases[row][0] = new TestRequest("DELETE","project/45/destroy");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"destroy");
-        row++;
+            testCases[row][0] = new TestRequest("DELETE",noun + "/" + id + "/destroy");
+            testCases[row][1] = new ParsedRoute(controller,id,"destroy");
+            row++;
 
-        testCases[row][0] = new TestRequest("GET","project/45/frobnosticate");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"frobnosticate");
-        row++;
+            testCases[row][0] = new TestRequest("GET",noun + "/" + id + "/frobnosticate");
+            testCases[row][1] = new ParsedRoute(controller,id,"frobnosticate");
+            row++;
 
-        testCases[row][0] = new TestRequest("PUT","project/45/frobnosticate");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"frobnosticate");
-        row++;
+            testCases[row][0] = new TestRequest("GET",noun + "/" + id + "/do_this_now");
+            testCases[row][1] = new ParsedRoute(controller,id,"doThisNow");
+            row++;
 
-        testCases[row][0] = new TestRequest("POST","project/45/frobnosticate");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"frobnosticate");
-        row++;
+            testCases[row][0] = new TestRequest("PUT",noun + "/" + id + "/frobnosticate");
+            testCases[row][1] = new ParsedRoute(controller,id,"frobnosticate");
+            row++;
 
-        testCases[row][0] = new TestRequest("DELETE","project/45/frobnosticate");
-        testCases[row][1] = new ParsedRoute("ProjectController",45L,"frobnosticate");
-        row++;
+            testCases[row][0] = new TestRequest("POST",noun + "/" + id + "/frobnosticate");
+            testCases[row][1] = new ParsedRoute(controller,id,"frobnosticate");
+            row++;
 
+            testCases[row][0] = new TestRequest("DELETE",noun + "/" + id + "/frobnosticate");
+            testCases[row][1] = new ParsedRoute(controller,id,"frobnosticate");
+            row++;
+
+            testCases[row][0] = new TestRequest("GET",noun + "/asdfasdfasdf/frobnosticate");
+            testCases[row][1] = null;
+            row++;
+
+            testCases[row][0] = new TestRequest("bleorgh",noun + "/45/frobnosticate");
+            testCases[row][1] = null;
+            row++;
+        }
         return testCases;
     }
 
@@ -77,9 +101,20 @@ public class TestRouteParser
     public void testNormalCases(TestRequest request, ParsedRoute route)
     {
         ParsedRoute parsedRoute = itsParser.parse(request.method,request.url);
-        Assert.assertEquals(parsedRoute.getControllerName(),route.getControllerName());
-        Assert.assertEquals(parsedRoute.getId(),route.getId());
-        Assert.assertEquals(parsedRoute.getActionName(),route.getActionName());
+        if (parsedRoute == null)
+        {
+            assert route == null : "Got null for " + request.toString() + " but we expected " + route.toString();
+        }
+        else if (route == null)
+        {
+            Assert.fail("Expected null for " + request.toString() + ", but got " + parsedRoute.toString());
+        }
+        else
+        {
+            Assert.assertEquals(parsedRoute.getControllerName(),route.getControllerName());
+            Assert.assertEquals(parsedRoute.getId(),route.getId());
+            Assert.assertEquals(parsedRoute.getActionName(),route.getActionName());
+        }
     }
 
 

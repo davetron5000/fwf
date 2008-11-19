@@ -21,17 +21,29 @@ public class RouteParser
     public ParsedRoute parse(String request, String uri)
     {
         if (uri == null)
-            throw new IllegalArgumentException("null uris are not allowed");
+        {
+            itsLogger.warn("null uris are not allowed");
+            return null;
+        }
         if (request == null)
-            throw new IllegalArgumentException("null request methods are not allowed");
+        {
+            itsLogger.warn("null request methods are not allowed");
+            return null;
+        }
 
         RequestMethod method = RequestMethod.fromString(request);
         if (method == null)
-            throw new IllegalArgumentException(request + " is not a known request method");
+        {
+            itsLogger.warn(" is not a known request method");
+            return null;
+        }
 
         String parts[] = uri.split("\\/");
         if (parts.length == 0)
-            throw new IllegalArgumentException("uris with nothing in them aren't allowed");
+        {
+            itsLogger.warn("uris with nothing in them aren't allowed");
+            return null;
+        }
 
         String controllerName = getControllerName(parts[0]);
         Long id = null;
@@ -39,6 +51,11 @@ public class RouteParser
         if (parts.length > 1)
         {
             id = parseId(parts[1]);
+            if (id == null)
+            {
+                itsLogger.warn("Couldn't parse id " + parts[1]);
+                return null;
+            }
             if (parts.length > 2)
             {
                 actionName = getActionName(parts[2]);

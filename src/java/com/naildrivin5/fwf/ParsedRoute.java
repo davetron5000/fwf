@@ -34,4 +34,12 @@ public class ParsedRoute
     {
         return itsActionName; 
     }
+
+    /** Returns a string representation suitable for debugging/log messages.
+     * @return string representation.
+     */
+    public String toString()
+    {
+        return getControllerName() + " for id " + getId() + ", action: " + getActionName();
+    }
 }

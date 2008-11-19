@@ -121,22 +121,38 @@ items:
           - *id018
           - *id013
           - *id014
+          finish_date: &id020 2008-11-18 21:23:40.372835 -05:00
           id: 12
           name: Create controller finder
+          start_date: *id020
         - *id010
+        - &id022 !ruby/object:Claret::Task 
+          contributes_to: 
+          - *id006
+          dependents: []
+
+          id: 16
+          name: Create class to orchestrate the routing/lookup
+        - &id023 !ruby/object:Claret::Task 
+          contributes_to: 
+          - *id006
+          dependents: []
+
+          id: 17
+          name: Create routing servlet to use the orchestration class
         estimated_achieve_date: 
         id: 14
-        name: Create routing servlet
+        name: Routing Servlet created
       dependents: 
       - *id004
       - *id017
       - *id018
       - *id013
       - *id014
-      finish_date: &id020 2008-11-18 20:58:19.751997 -05:00
+      finish_date: &id021 2008-11-18 20:58:19.751997 -05:00
       id: 11
       name: Create route parser
-      start_date: *id020
+      start_date: *id021
     - *id008
     - *id010
     id: 4
@@ -164,5 +180,7 @@ items:
 
   id: 15
   name: Improve error handling in routing parser
+- *id022
+- *id023
 name: Fun Web Framework
-next_id: 16
+next_id: 18

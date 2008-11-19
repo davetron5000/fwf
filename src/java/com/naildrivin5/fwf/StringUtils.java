@@ -27,7 +27,7 @@ public class StringUtils
 
     /** Returns a non-capitalized version of this string.
      * @param string the string to uncapitalize.
-     * @return the string where the first character is in lower case (based on {@link java.lang.String#toLowerCase(java.lang.String)}).
+     * @return the string where the first character is in lower case (based on {@link java.lang.String#toLowerCase()}).
      */
     public static String lcfirst(String string)
     {
@@ -41,7 +41,7 @@ public class StringUtils
 
     /** Returns a capitalized version of this string.
      * @param string the string to capitalize.
-     * @return the string where the first character is in upper case (based on {@link java.lang.String#toUpperCase(java.lang.String)}).
+     * @return the string where the first character is in upper case (based on {@link java.lang.String#toUpperCase()}).
      */
     public static String ucfirst(String string)
     {

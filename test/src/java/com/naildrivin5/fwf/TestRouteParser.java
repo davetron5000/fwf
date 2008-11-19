@@ -10,8 +10,8 @@ public class TestRouteParser
 {
     private RouteParser itsParser;
 
-    @DataProvider(name = "testCases")
-    private Object[][] getTestCases()
+    @DataProvider(name = "simpleTestCases")
+    private Object[][] getSimpleTestCases()
     {
         Object testCases[][] = new Object[15 * 2][2];
 
@@ -97,7 +97,7 @@ public class TestRouteParser
         itsParser = RouteParserFactory.create();
     }
 
-    @Test(dataProvider = "testCases")
+    @Test(dataProvider = "simpleTestCases")
     public void testNormalCases(TestRequest request, ParsedRoute route)
     {
         ParsedRoute parsedRoute = itsParser.parse(request.method,request.url);

@@ -140,6 +140,27 @@ items:
 
           id: 17
           name: Create routing servlet to use the orchestration class
+        - &id024 !ruby/object:Claret::Task 
+          contributes_to: 
+          - *id006
+          dependents: []
+
+          id: 18
+          name: Create class to call set methods on the controller
+        - &id025 !ruby/object:Claret::Task 
+          contributes_to: 
+          - *id006
+          dependents: []
+
+          id: 19
+          name: Create request object to provide access to servlet request
+        - &id026 !ruby/object:Claret::Task 
+          contributes_to: 
+          - *id006
+          dependents: []
+
+          id: 20
+          name: Create response object to communicate results
         estimated_achieve_date: 
         id: 14
         name: Routing Servlet created
@@ -182,5 +203,8 @@ items:
   name: Improve error handling in routing parser
 - *id022
 - *id023
+- *id024
+- *id025
+- *id026
 name: Fun Web Framework
-next_id: 18
+next_id: 21

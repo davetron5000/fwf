@@ -2,5 +2,6 @@
     <path id="compile.classpath">
         <fileset dir="${rt.lib.dir}"> <include name="*.jar"/> </fileset>
         <fileset dir="${test.lib.dir}"> <include name="*.jar"/> </fileset>
+        <fileset dir="${j2ee.lib.dir}"> <include name="servlet-*.jar"/> </fileset>
     </path>
 </project>

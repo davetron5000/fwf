@@ -16,6 +16,7 @@
     <import file="${ant.src.dir}/compile.xml" />
     <import file="${ant.src.dir}/javadoc.xml" />
     <import file="${ant.src.dir}/war.xml" />
+    <import file="${ant.src.dir}/test.xml" />
 
     <!-- SUB TARGETS -->
 

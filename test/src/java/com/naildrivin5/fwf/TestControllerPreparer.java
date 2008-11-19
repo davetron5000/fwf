@@ -28,6 +28,8 @@ public class TestControllerPreparer
         itsSimpleMap.put("crud","blah");
         itsSimpleMapNumNonEmptyElements++;
         itsSimpleMap.put("age","16");
+        itsSimpleMapNumNonEmptyElements++;
+        itsSimpleMap.put("taskNames",new String[] { "do this","do that","do something else"});
         itsParameters = itsParser.parse(itsSimpleMap);
     }
 
@@ -43,6 +45,25 @@ public class TestControllerPreparer
 
         preparer.prepare(controller,99L,itsParameters);
         verify(controller);
+    }
+
+    public void testArraySet()
+    {
+        ProjectController controller = new ProjectController();
+
+        ControllerPreparer preparer = new ControllerPreparer();
+
+        preparer.prepare(controller,99L,itsParameters);
+
+        List<String> names = controller.getTaskNames();
+        String expectedNames[] = (String[])itsSimpleMap.get("taskNames");
+
+        Assert.assertEquals(expectedNames.length,names.size());
+
+        for (String name: expectedNames)
+        {
+            assert names.contains(name) : "Expected " + name + " to be in our list";
+        }
     }
 
     public void testSimpleCaseNoId()

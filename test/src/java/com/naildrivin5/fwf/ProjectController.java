@@ -1,5 +1,7 @@
 package com.naildrivin5.fwf;
 
+import java.util.*;
+
 public class ProjectController extends ApplicationController
 {
     private String itsFoo;
@@ -9,4 +11,9 @@ public class ProjectController extends ApplicationController
     private Long itsAge;
     public Long getAge() { return itsAge; }
     public void setAge(Long i) { itsAge = i; }
+
+    private List<String> itsTaskNames;
+    public List<String> getTaskNames() { return itsTaskNames; }
+    public void setTaskNames(List<String> i) { itsTaskNames = i; }
+
 }

@@ -113,7 +113,7 @@ public class TestRouteParser
         }
         else
         {
-            Assert.assertEquals(parsedRoute.getControllerName(),route.getControllerName());
+            Assert.assertEquals(parsedRoute.getModelName(),route.getModelName());
             Assert.assertEquals(parsedRoute.getId(),route.getId());
             Assert.assertEquals(parsedRoute.getActionName(),route.getActionName());
         }

@@ -16,4 +16,21 @@ public class ProjectController extends ApplicationController
     public List<String> getTaskNames() { return itsTaskNames; }
     public void setTaskNames(List<String> i) { itsTaskNames = i; }
 
+    public void show()
+    {
+    }
+
+    public void show(String blah)
+    {
+    }
+
+    public void doit(String blah)
+    {
+    }
+
+    public void update()
+    {
+    }
+
+
 }

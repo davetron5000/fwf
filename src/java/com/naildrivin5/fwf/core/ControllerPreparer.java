@@ -22,6 +22,7 @@ public class ControllerPreparer
     {
         controller.setId(id);
         controller.setParams(parameters);
+        controller.setResponse(new Response());
 
         ConvertingWrapDynaBean bean = new ConvertingWrapDynaBean(controller);
 

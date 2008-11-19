@@ -11,9 +11,10 @@ import org.apache.log4j.*;
  */
 public class ApplicationController
 {
+    private Logger itsLogger = Logger.getLogger(getClass().getName());
     private Long itsId;
     private Parameters itsParams;
-    private Logger itsLogger = Logger.getLogger(getClass().getName());
+    private Response itsResponse;
 
     /** Provides access to a shared logger.
      * @return a logger configured for the implementing class (not hard-coded to ApplicationController).
@@ -45,6 +46,19 @@ public class ApplicationController
     public void setParams(Parameters params)
     {
         itsParams = params;
+    }
+
+    public void setResponse(Response response)
+    {
+        itsResponse = response;
+    }
+
+    /** Provides access to the response.
+     * @return the Response object
+     */
+    public Response response()
+    {
+        return itsResponse;
     }
 
 }

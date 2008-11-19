@@ -3,6 +3,7 @@ package com.naildrivin5.fwf.core;
 import com.naildrivin5.fwf.*;
 
 import java.util.*;
+import javax.servlet.http.*;
 
 import org.testng.*;
 import org.testng.annotations.*;
@@ -42,6 +43,8 @@ public class TestControllerPreparer
 
         controller.setId(99L);
         controller.setParams(itsParameters);
+        Response anyResponse = notNull();
+        controller.setResponse(anyResponse);
         replay(controller);
 
         ControllerPreparer preparer = new ControllerPreparer();
@@ -75,6 +78,8 @@ public class TestControllerPreparer
 
         controller.setId(null);
         controller.setParams(itsParameters);
+        Response anyResponse = notNull();
+        controller.setResponse(anyResponse);
         replay(controller);
 
         ControllerPreparer preparer = new ControllerPreparer();
@@ -92,6 +97,8 @@ public class TestControllerPreparer
         controller.setFoo("bar");
         controller.setAge(16L);
 
+        Response anyResponse = notNull();
+        controller.setResponse(anyResponse);
         replay(controller);
 
         ControllerPreparer preparer = new ControllerPreparer();

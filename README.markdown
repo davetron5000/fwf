@@ -32,45 +32,17 @@ Models should be any java object you want (or at least treatable that way).
 
 It stands to reason that all requests to a web application are of the form `*METHOD* URI` and that we can figure out everything we need from that bit of information; no XML (or, almost no XML).
 
-<table border="1">
-    <tr><th>Method</th><th>URI Pattern</th><th>Method Called</th><th>Effect</ht></tr>
-    <tr>
-        <td>GET</td>
-        <td><tt>$CONTEXT_ROOT/Widget</tt></td>
-        <td><tt>index()</tt></td>
-        <td>Access the list of all Widgets via the <tt>WidgetController</tt> class</td>
-    </tr>
-    <tr>
-        <td>GET</td>
-        <td><tt>$CONTEXT_ROOT/Widget/45</tt></td>
-        <td><tt>show()</tt></td>
-        <td>Access the Widgets with ID 45 via the <tt>WidgetController</tt> class</td>
-    </tr>
-    <tr>
-        <td>PUT</td>
-        <td><tt>$CONTEXT_ROOT/Widget/45?name=New+Name&price=45</tt></td>
-        <td><tt>update()</tt></td>
-        <td>Update Widget with ID 54 via the <tt>WidgetController</tt> class, using <tt>setName(String)</tt> and <tt>setPrice(int)</tt> on that class to convey the parameters.</td>
-    </tr>
-    <tr>
-        <td>POST</td>
-        <td><tt>$CONTEXT_ROOT/Widget/</tt></td>
-        <td><tt>create()</tt></td>
-        <td>Create a new Widget using the <tt>WidgetController</tt> class</td>
-    </tr>
-    <tr>
-        <td>DELETE</td>
-        <td><tt>$CONTEXT_ROOT/Widget/45</tt></td>
-        <td><tt>destroy()</tt></td>
-        <td>Delete the Widget with id 45 using the <tt>WidgetController</tt> class</td>
-    </tr>
-    <tr>
-        <td>GET or POST</td>
-        <td><tt>$CONTEXT_ROOT/Widget/45/frobnosticate</tt></td>
-        <td><tt>frobnosticate()</tt></td>
-        <td>Frobnosticate (whatever that means) the Widget with id 45 using the <tt>WidgetController</tt> class</td>
-    </tr>
-</table>
+    HTTP   * URI Pattern            * Method  * Effect
+    Method |                        | Called  |
+    -------|------------------------|---------|------------------------------------------
+    GET    $ROOT/Widget               index()   Access the list of all Widgets via the WidgetController class
+    GET    $ROOT/Widget/45            show()    Access the Widgets with ID 45 via the WidgetController class
+    PUT    $ROOT/Widget/45            update()  Update Widget with ID 54 via the WidgetController class, using
+           ?name=New+Name&price=13              setName(String) and setPrice(int) on that class to convey the parameters.
+    POST   $ROOT/Widget/              create()  Create a new Widget using the WidgetController class
+    DELETE $ROOT/Widget/45            destroy() Delete the Widget with id 45 using the WidgetController class
+    GET or $ROOT/Widget/45/doit       doit()    Doit (whatever that means) the Widget with id 45 using the WidgetController class
+    POST
 
 This is incredibly easy to accomplish, and the only configuration that needs to occur is:
 

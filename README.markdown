@@ -32,7 +32,7 @@ Models should be any java object you want (or at least treatable that way).
 
 It stands to reason that all requests to a web application are of the form `*METHOD* URI` and that we can figure out everything we need from that bit of information; no XML (or, almost no XML).
 
-<table border=1>
+<table border="1">
     <tr><th>Method</th><th>URI Pattern</th><th>Method Called</th><th>Effect</ht></tr>
     <tr>
         <td>GET</td>

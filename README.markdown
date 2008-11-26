@@ -109,3 +109,9 @@ A better solution might be to replace JSP entirely.  GWT is a nice approach, but
 ## Conclusions
 
 My hope of a small and feature-filled Java Web Framework is not currently to be.  While the Servlet spec is bafflingly limited; it can be used easily to create a small, easy-to-use controller framework.  JSP, on the other hand, is just a really bad solution to creating dynamic HTML.  Tag libraries are a hack that transfer the pain from one place to another, but a better solution is to either author the entire view in Java or use a dynamic/scripting language.
+
+## Areas for further research
+
+[JRuby](http://wiki.jruby.org/wiki/Main_Page) provides a means to have Ruby scripting interact with Java, via the [scripting extension](https://scripting.dev.java.net/) to Java.  This could essentially allow for using a scripting language for the view (even straight Rails stuff).
+
+

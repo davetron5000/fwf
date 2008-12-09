@@ -31,6 +31,7 @@ public class Parameters extends HashMap<String,Object>
 
     /** Gets the value of the parameter as a string.
      * @param param the parameter value
+     *
      * @return the parameter as a string, or null if it wasn't in the map.  If there were multiple values,
      * returns the first one parsed (which is largely undefined)
      */

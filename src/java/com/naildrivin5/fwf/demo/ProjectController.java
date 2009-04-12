@@ -9,11 +9,15 @@ public class ProjectController extends ApplicationController
 {
     private List<Project> itsProjects;
 
+    /** Get the list of projects.  
+     * @return the list of projects.
+     * */
     public List<Project> getProjects()
     {
         return itsProjects;
     }
 
+    /** index the list of projects. */
     public void index()
     {
         itsProjects = new ArrayList<Project>();

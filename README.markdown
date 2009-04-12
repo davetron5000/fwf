@@ -4,7 +4,7 @@
 
 This was an experiment I did over a day and a half to see how quickly I could create an easy-to-use and easy-to-deploy Java Web Framework based on convention over configuration; to make something opinionated (basically mimicing how Rails works) in Java.  
 
-The results were that it's easy to create a simple controller framework that deals with some of the web's annoynaces (namely mapping URIs to code as well as serialiation of data to and from strings), but creating a robust and easy to use view framework is a bit more of a herculian task.
+The results were that it's easy to create a simple controller framework that deals with some of the web's annoyances (namely mapping URIs to code as well as serialization of data to and from strings), but creating a robust and easy to use view framework is a bit more of a herculian task.
 
 ## Background
 
@@ -14,44 +14,48 @@ Web development is problematic because:
 * URLs must be mapped to code to handle them
 * Generating HTML/CSS/Javascript is difficult and requires agility in order to hone in on a functional and usable design
 
-Most Java web frameworks provide the ability to address these issues, however few (any?) provide a way to do so simple and easily and most of them are just simply not very fun to use.
+Most Java web frameworks provide the ability to address these issues, however few (any?) provide a way to do so simply and easily and most of them are just simply not very fun to use (does *anyone* enjoy Spring XML bean configrations?  Or JSF XML configurations?)
 
 ## Motivation
 
-Java Web Development is **not** fun because you must do tons of XML situps and specify lots of things that could be figured out by just following conventions.  Further, it is not fun because creating the view is much more difficult than it needs to be.
+Java Web Development is **not** fun because:
+
+* You must do tons of XML situps 
+* You must specify lots of things that could be figured out by just following conventions.  
+* Creating the view is much more difficult than it needs to be. (i.e. JSP is not a templating language)
 
 ## Making it Fun
 
-Model-View-Controller is a reasonable approach to web development, and most web frameworks use this patternt o solve the problem.  Serlvets, Struts, Spring and Seam just seem to require way too much overhead to do something that should be relatively simple (and should've been baked into the Servlet specification from the start).
+Model-View-Controller is a reasonable approach to web development, and most web frameworks use this pattern to solve the problem.  Serlvets, Struts, Spring and Seam just seem to require way too much overhead to do something that should be relatively simple (and should've been baked into the Servlet specification from the start).
 
 ### Model
 
-Models should be any java object you want (or at least treatable that way).
+Models should be any java object you want (or at least treatable that way).  There should be no real requirements beyond the Java Bean standard for accessing properties.
 
 ### Controller
 
 It stands to reason that all requests to a web application are of the form `*METHOD* URI` and that we can figure out everything we need from that bit of information; no XML (or, almost no XML).
 
-    HTTP   * URI Pattern            * Method  * Effect
-    Method |                        | Called  |
-    -------|------------------------|---------|------------------------------------------
-    GET    $ROOT/Widget               index()   Access the list of all Widgets via the WidgetController class
-    GET    $ROOT/Widget/45            show()    Access the Widgets with ID 45 via the WidgetController class
-    PUT    $ROOT/Widget/45            update()  Update Widget with ID 54 via the WidgetController class, using
-           ?name=New+Name&price=13              setName(String) and setPrice(int) on that class to convey the parameters.
-    POST   $ROOT/Widget/              create()  Create a new Widget using the WidgetController class
-    DELETE $ROOT/Widget/45            destroy() Delete the Widget with id 45 using the WidgetController class
-    GET or $ROOT/Widget/45/doit       doit()    Doit (whatever that means) the Widget with id 45 using the WidgetController class
-    POST
+    HTTP   * URI Pattern              * Method    * Effect
+    Method |                          | Called    |
+    -------|--------------------------|-----------|-----------------------------------------------------------------------------------
+    GET    | $ROOT/Widget             | index()   | Access the list of all Widgets via the WidgetController class
+    GET    | $ROOT/Widget/45          | show()    | Access the Widgets with ID 45 via the WidgetController class
+    PUT    | $ROOT/Widget/45          | update()  | Update Widget with ID 54 via the WidgetController class, using
+             ?name=New+Name&price=13  |           | setName(String) and setPrice(int) on that class to convey the parameters.
+    POST   | $ROOT/Widget/            | create()  | Create a new Widget using the WidgetController class
+    DELETE | $ROOT/Widget/45          | destroy() | Delete the Widget with id 45 using the WidgetController class
+    GET or | $ROOT/Widget/45/doit     | doit()    | Doit (whatever that means) the Widget with id 45 using the WidgetController class
+    POST   |                          |           | 
 
 This is incredibly easy to accomplish, and the only configuration that needs to occur is:
 
 * Configure a Servlet in <tt>web.xml</tt>
 * Configure that Servlet with the packages in which to search for Controllers
 
-Honestly, the Servlet spec should've operated in a similar fashion from the get-go.  Would it have really been too much to ask to assume that a class that implemented servlet named <tt>FooServlet</tt> be automatically mapped to <tt>/foo</tt> unless otherwise specified?
+Why the Servlet spec *still* doesn't work this way is a mystery. Would it have really been too much to ask to assume that a class that implemented servlet named <tt>FooServlet</tt> be automatically mapped to <tt>/foo</tt> unless otherwise specified?
 
-Anyway, this is very much a copy of how Rails works; a controller can access parameters via a <tt>params</tt> hash that returns parameters as strings, or by implementing <tt>setXXX</tt> methods that can take types (e.g. a <tt>setAge(int)</tt> will get called for a paremter in the querystring of <tt>age=45</tt>).  The controller can then do whatever it needs to do.
+Anyway, this is obviously a copy of how Rails works; a controller can access parameters via a <tt>params</tt> hash that returns parameters as strings, or by implementing <tt>setXXX</tt> methods that can take types (e.g. a <tt>setAge(int)</tt> will get called for a paremter in the querystring of <tt>age=45</tt>).  The controller can then do whatever it needs to do.
 
 After processing, the controller has three options: 
 
@@ -104,7 +108,7 @@ The only way to do that is to dynamically introduce scripting variables based on
 
 This would require extending JSP to give Java the appearance of being a dynamic languages for the view layer.
 
-A better solution might be to replace JSP entirely.  GWT is a nice approach, but a dynamic "change/reload" solution would be ideal, because you don't really want to wait for a recompile when tweaking the UI.
+A better solution might be to replace JSP entirely.  GWT is a nice approach, but a dynamic "change/reload" solution would be ideal, because you don't really want to wait for a recompile when tweaking the UI.  This could be done wiht the JSR-223 Scripting support, or something like Freemarker.
 
 ## Conclusions
 
